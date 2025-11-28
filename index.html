@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Iron Jab - Tu compañero de entrenamiento para atletas. Organiza rutinas de boxeo con métodos científicos TABATA e HIIT.">
+    <title>Iron Jab - Entrenamiento para Atletas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #fafafa;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .logo {
+            font-size: 64px;
+            margin-bottom: 16px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        h1 {
+            color: #FF6B35;
+            font-size: 48px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            color: #b0b0b0;
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6B35 0%, #E85D04 100%);
+            color: white !important;
+            padding: 16px 32px;
+            border-radius: 30px;
+            text-decoration: none !important;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(232, 93, 4, 0.2) 100%);
+            border: 2px solid #FF6B35;
+            color: #FF6B35 !important;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.3) 0%, rgba(232, 93, 4, 0.3) 100%);
+        }
+        
+        .section {
+            background: linear-gradient(145deg, #1e1e1e 0%, #252525 100%);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 32px 0;
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section h2 {
+            color: #FF6B35;
+            font-size: 28px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section h3 {
+            color: #FFB347;
+            font-size: 20px;
+            margin: 24px 0 16px 0;
+        }
+        
+        .section p {
+            color: #e0e0e0;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 107, 53, 0.05);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        
+        .feature-card h4 {
+            color: #FFB347;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .feature-card p {
+            color: #b0b0b0;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+        
+        ul li {
+            padding: 12px 0 12px 32px;
+            position: relative;
+            color: #e0e0e0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        
+        ul li:last-child {
+            border-bottom: none;
+        }
+        
+        ul li::before {
+            content: "✓";
+            color: #10B981;
+            font-weight: bold;
+            position: absolute;
+            left: 8px;
+            font-size: 18px;
+        }
+        
+        .highlight-box {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+        
+        .highlight-box p {
+            color: #10B981;
+            font-size: 16px;
+            margin: 0;
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(232, 93, 4, 0.1) 100%);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            padding: 32px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 32px;
+        }
+        
+        .contact-card h3 {
+            color: #FF6B35;
+            margin-bottom: 16px;
+        }
+        
+        .contact-card p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        
+        a {
+            color: #FF6B35;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #FFB347;
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        footer p {
+            color: #5a5a5a;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+        
+        footer a {
+            color: #808080;
+            margin: 0 12px;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .logo {
+                font-size: 48px;
+            }
+            
+            .section {
+                padding: 24px;
+            }
+            
+            .section h2 {
+                font-size: 24px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🥊</div>
+            <h1>Iron Jab</h1>
+            <p class="tagline">Tu Compañero de Entrenamiento para Atletas</p>
+            <p style="color: #808080; font-size: 16px; max-width: 600px; margin: 0 auto;">
+                Organiza tus rutinas de entrenamiento con métodos científicos TABATA e HIIT. 
+                Diseñado especialmente para boxeadores y entusiastas del fitness.
+            </p>
+            <div class="download-buttons">
+                <a href="https://play.google.com/store/apps/details?id=com.ironjab.app" class="btn" target="_blank">
+                    📱 Descargar en Google Play
+                </a>
+                <a href="#caracteristicas" class="btn btn-secondary">
+                    ✨ Ver Características
+                </a>
+            </div>
+        </header>
+        
+        <!-- Características principales -->
+        <div class="section" id="caracteristicas">
+            <h2>🔥 Características Principales</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>Rutinas Personalizadas</h4>
+                    <p>Crea rutinas adaptadas a tu nivel y objetivos. Organiza ejercicios de fuerza, cardio, HIIT y más.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h4>Método Científico TABATA</h4>
+                    <p>Entrenamientos basados en el protocolo TABATA del Dr. Izumi Tabata. Intervalos de alta intensidad para maximizar tu VO2max.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏋️</div>
+                    <h4>Catálogo de Ejercicios</h4>
+                    <p>Amplia biblioteca de ejercicios con descripciones detalladas. Ejercicios de peso corporal y con pesas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h4>Seguimiento de Progreso</h4>
+                    <p>Historial completo de tus entrenamientos. Estadísticas de rendimiento y visualización de tu evolución.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧘</div>
+                    <h4>Calentamiento Inteligente</h4>
+                    <p>Secuencias de movilidad, estiramiento y activación. Prepara tu cuerpo antes de cada sesión.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h4>Recordatorios</h4>
+                    <p>Notificaciones personalizables para entrenamientos y alertas de hidratación. Mantén la constancia.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Funcionalidades -->
+        <div class="section">
+            <h2>🛠️ Herramientas de Salud</h2>
+            <p>Iron Jab incluye herramientas útiles para complementar tu entrenamiento:</p>
+            <ul>
+                <li><strong>Calculadora de IMC</strong> - Conoce tu índice de masa corporal</li>
+                <li><strong>Calculadora de Calorías</strong> - Estima las calorías quemadas en tus entrenamientos</li>
+                <li><strong>Recordatorio de Agua</strong> - Mantén una hidratación adecuada</li>
+                <li><strong>Consejos de Nutrición</strong> - Guías de nutrición deportiva para mejorar tu rendimiento</li>
+                <li><strong>Tips de Entrenamiento</strong> - Consejos de expertos para optimizar tus sesiones</li>
+            </ul>
+        </div>
+        
+        <!-- Para quién es -->
+        <div class="section">
+            <h2>👥 ¿Para Quién es Iron Jab?</h2>
+            <p>Iron Jab está diseñado para:</p>
+            <ul>
+                <li><strong>Boxeadores</strong> - Sistema de rounds perfecto para entrenamientos de boxeo</li>
+                <li><strong>Atletas</strong> - Entrenamientos de alta intensidad para mejorar el rendimiento</li>
+                <li><strong>Entusiastas del Fitness</strong> - Organiza y estructura tus entrenamientos de manera efectiva</li>
+                <li><strong>Personas que entrenan en casa</strong> - Rutinas adaptadas para espacios reducidos</li>
+                <li><strong>Usuarios de gimnasio</strong> - Combina ejercicios con pesas y peso corporal</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p>✅ <strong>Gratuito:</strong> Iron Jab es completamente gratuito. Todas las funciones principales están disponibles sin costo.</p>
+            </div>
+        </div>
+        
+        <!-- Tecnología -->
+        <div class="section">
+            <h2>💻 Tecnología</h2>
+            <p>Iron Jab está construido con las mejores tecnologías para ofrecerte una experiencia fluida y confiable:</p>
+            <ul>
+                <li><strong>Sincronización en la nube</strong> - Tus datos se guardan automáticamente y están disponibles en todos tus dispositivos</li>
+                <li><strong>Interfaz moderna</strong> - Diseño intuitivo y fácil de usar</li>
+                <li><strong>Rendimiento optimizado</strong> - Aplicación rápida y eficiente</li>
+                <li><strong>Seguridad</strong> - Tus datos están protegidos con encriptación de extremo a extremo</li>
+            </ul>
+        </div>
+        
+        <!-- Contacto -->
+        <div class="section">
+            <h2>📧 Contacto y Soporte</h2>
+            <p>¿Tienes preguntas, sugerencias o necesitas ayuda? Estamos aquí para ti.</p>
+            
+            <div class="contact-card">
+                <h3>Iron Jab - Soporte</h3>
+                <p>Estamos comprometidos con tu experiencia</p>
+                <a href="mailto:ironjab@prevalentcluster.com?subject=Consulta%20sobre%20Iron%20Jab" class="btn">
+                    ✉️ ironjab@prevalentcluster.com
+                </a>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="nav-links">
+                <a href="https://adonisgomez.github.io/ironjab-privacy-policy/">Política de Privacidad</a>
+                <a href="https://adonisgomez.github.io/ironjab-delete-account/">Eliminar Cuenta</a>
+                <a href="mailto:ironjab@prevalentcluster.com">Contacto</a>
+            </div>
+            <p>© 2025 Iron Jab. Todos los derechos reservados.</p>
+            <p>
+                Desarrollado con 🧡 para atletas y entusiastas del fitness
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
+
