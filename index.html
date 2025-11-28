@@ -297,6 +297,31 @@
             }
         }
     </style>
+    <script>
+        function sendEmail() {
+            const email = 'ironjab@prevalentcluster.com';
+            const subject = encodeURIComponent('Consulta sobre Iron Jab');
+            const body = encodeURIComponent('Hola,\n\n');
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+            return false;
+        }
+        
+        function copyEmail() {
+            const email = 'ironjab@prevalentcluster.com';
+            navigator.clipboard.writeText(email).then(function() {
+                alert('Email copiado al portapapeles: ' + email);
+            }, function() {
+                // Fallback para navegadores que no soportan clipboard API
+                const textArea = document.createElement('textarea');
+                textArea.value = email;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('Email copiado al portapapeles: ' + email);
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -407,9 +432,17 @@
             <div class="contact-card">
                 <h3>Iron Jab - Soporte</h3>
                 <p>Estamos comprometidos con tu experiencia</p>
-                <a href="mailto:ironjab@prevalentcluster.com?subject=Consulta%20sobre%20Iron%20Jab" class="btn">
-                    ✉️ ironjab@prevalentcluster.com
-                </a>
+                <p style="margin: 20px 0; color: #e0e0e0; font-size: 18px;">
+                    <strong>Email:</strong> <span style="color: #FF6B35; font-weight: 600;">ironjab@prevalentcluster.com</span>
+                </p>
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <a href="mailto:ironjab@prevalentcluster.com?subject=Consulta sobre Iron Jab" class="btn" onclick="sendEmail(); return false;">
+                        ✉️ Enviar Correo
+                    </a>
+                    <button onclick="copyEmail()" class="btn btn-secondary" style="cursor: pointer; border: none;">
+                        📋 Copiar Email
+                    </button>
+                </div>
             </div>
         </div>
         
